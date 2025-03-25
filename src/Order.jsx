@@ -22,9 +22,10 @@ export default function Order() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(cart),
+            body: JSON.stringify({cart}),
         });
         setCart([]);
+        setLoading(false);
     }
 
     let price, selectedPizza;
@@ -124,7 +125,7 @@ export default function Order() {
                     
                 </div>
                 {
-                        loading ? <h2>Loading ...</h2> : <Cart cart={cart} />
+                        loading ? <h2>Loading ...</h2> : <Cart checkout={checkout} cart={cart} /> // if loading is true, display "Loading ...", otherwise display the Cart component
                     }
             </div>
           )
